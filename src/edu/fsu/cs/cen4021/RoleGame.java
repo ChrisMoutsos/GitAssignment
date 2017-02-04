@@ -14,6 +14,7 @@ public class RoleGame {
         printWeaponInfo("SimpleAxe", 20);
         printWeaponInfo("SimpleMagicStaff", 20);
         printWeaponInfo("TheChosenOneAxe", 20);
+        printWeaponInfo("AncientMagicStaff", 20);
     }
 
     private static void printWeaponInfo(String weaponName, int armor) {
