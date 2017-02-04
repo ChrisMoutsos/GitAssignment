@@ -1,0 +1,38 @@
+(a)
+Counting objects: 11, done.
+Delta compression using up to 4 threads.
+Compressing objects: 100% (6/6), done.
+Writing objects: 100% (7/7), 921 bytes | 0 bytes/s, done.
+Total 7 (delta 1), reused 0 (delta 0)
+remote: Resolving deltas: 100% (1/1), done.
+To https://github.com/ChrisMoutsos/GitAssignment
+   cfb3b84..67d430e  master -> master
+
+(b)
+You can use `git log` and count the commits. Or `git log | grep '^commit' | wc -l`. Or `git rev-list --count HEAD`.
+There have been a total of 12 commits.
+
+(c)
+`git log .gitignore` gives the following date for the latest change:
+Thu Sep 15 10:29:34 2016 -0400
+
+(d)
+`git log filename.txt` | grep '^commit' | wc -l` gives the number of commits for filename.txt.
+RoleGame.java: 2
+BasicWeapon.java: 1
+Sword.java: 1
+WeaponFactory.java: 1
+Weapon.java: 1
+
+(e)
+`git log` shows the commit logs for the repo, while `git status` shows the current working tree status (added/removed/modified files).
+
+(f)
+`git log RoleGame.java`
+
+(g)
+`git log --grep="file"`
+
+(h)
+`git log --after="09/01/2016" --before="09/16/2016" --author="Alice"`
+
