@@ -9,11 +9,22 @@ import edu.fsu.cs.cen4021.armory.WeaponFactory;
 public class RoleGame {
 
     public static void main(String[] args) {
+        printWeaponInfo("Sword", 0);
         printWeaponInfo("Sword", 20);
+
+        printWeaponInfo("SimpleArrow", 0);
         printWeaponInfo("SimpleArrow", 20);
+
+        printWeaponInfo("SimpleAxe", 0);
         printWeaponInfo("SimpleAxe", 20);
+
+        printWeaponInfo("SimpleMagicStaff", 0);
         printWeaponInfo("SimpleMagicStaff", 20);
+
+        printWeaponInfo("TheChosenOneAxe", 0);
         printWeaponInfo("TheChosenOneAxe", 20);
+
+        printWeaponInfo("AncientMagicStaff", 0);
         printWeaponInfo("AncientMagicStaff", 20);
     }
 
