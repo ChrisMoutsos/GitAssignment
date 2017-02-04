@@ -1,6 +1,5 @@
 package edu.fsu.cs.cen4021;
 
-import com.sun.org.apache.bcel.internal.generic.ARRAYLENGTH;
 import edu.fsu.cs.cen4021.armory.Weapon;
 import edu.fsu.cs.cen4021.armory.WeaponFactory;
 
@@ -9,7 +8,7 @@ import java.util.Iterator;
 import java.util.List;
 
 /**
- * @author Javier
+ * @author Chris
  */
 public class RoleGame {
 
