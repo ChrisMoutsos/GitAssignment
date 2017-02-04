@@ -1,7 +1,12 @@
 package edu.fsu.cs.cen4021;
 
+import com.sun.org.apache.bcel.internal.generic.ARRAYLENGTH;
 import edu.fsu.cs.cen4021.armory.Weapon;
 import edu.fsu.cs.cen4021.armory.WeaponFactory;
+
+import java.util.Arrays;
+import java.util.Iterator;
+import java.util.List;
 
 /**
  * @author Javier
@@ -9,29 +14,35 @@ import edu.fsu.cs.cen4021.armory.WeaponFactory;
 public class RoleGame {
 
     public static void main(String[] args) {
-        printWeaponInfo("Sword", 0);
-        printWeaponInfo("Sword", 20);
+        List<String> weaponNames = Arrays.asList(
+                "Sword",
+                "SimpleArrow",
+                "SimpleAxe",
+                "SimpleMagicStaff",
+                "TheChosenOneAxe",
+                "AncientMagicStaff"
+        );
 
-        printWeaponInfo("SimpleArrow", 0);
-        printWeaponInfo("SimpleArrow", 20);
+        List<Integer> armors = Arrays.asList(
+                0,
+                20
+        );
 
-        printWeaponInfo("SimpleAxe", 0);
-        printWeaponInfo("SimpleAxe", 20);
+        for (Iterator<String> it = weaponNames.iterator(); it.hasNext();) {
+            String weaponName = it.next();
 
-        printWeaponInfo("SimpleMagicStaff", 0);
-        printWeaponInfo("SimpleMagicStaff", 20);
-
-        printWeaponInfo("TheChosenOneAxe", 0);
-        printWeaponInfo("TheChosenOneAxe", 20);
-
-        printWeaponInfo("AncientMagicStaff", 0);
-        printWeaponInfo("AncientMagicStaff", 20);
+            printWeaponInfo(weaponName, armors);
+        }
     }
 
-    private static void printWeaponInfo(String weaponName, int armor) {
+    private static void printWeaponInfo(String weaponName, List<Integer> armors) {
         Weapon weapon = WeaponFactory.getWeapon(weaponName);
         System.out.println(weaponName + " has " + weapon.hit() + " of damage.");
-        System.out.println(weaponName + " was able to do " + weapon.hit(armor) +
-                " of damage due to an armor with " + armor + " points.");
+        for (Iterator<Integer> it = armors.iterator(); it.hasNext();) {
+            Integer armor = it.next();
+            System.out.println(weaponName + " was able to do " + weapon.hit(armor) +
+                    " of damage due to an armor with " + armor + " points.");
+        }
+        System.out.println("");
     }
 }
