@@ -15,6 +15,12 @@ public class WeaponFactory {
         switch (type) {
             case "sword":
                 return new Sword();
+            case "simplearrow":
+                return new SimpleArrow();
+            case "simpleaxe":
+                return new SimpleAxe();
+            case "simplemagicstaff":
+                return new SimpleMagicStaff();
             case "thechosenoneaxe":
                 return new TheChosenOneAxe();
             default:

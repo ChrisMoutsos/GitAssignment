@@ -10,8 +10,10 @@ public class RoleGame {
 
     public static void main(String[] args) {
         printWeaponInfo("Sword", 20);
+        printWeaponInfo("SimpleArrow", 20);
+        printWeaponInfo("SimpleAxe", 20);
+        printWeaponInfo("SimpleMagicStaff", 20);
         printWeaponInfo("TheChosenOneAxe", 20);
-
     }
 
     private static void printWeaponInfo(String weaponName, int armor) {
