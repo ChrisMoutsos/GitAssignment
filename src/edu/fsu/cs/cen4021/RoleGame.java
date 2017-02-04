@@ -9,12 +9,15 @@ import edu.fsu.cs.cen4021.armory.WeaponFactory;
 public class RoleGame {
 
     public static void main(String[] args) {
-        Weapon sword = WeaponFactory.getWeapon("sword");
-        System.out.println("Sword has " + sword.hit() + " of damage.");
-        int armor = 20;
-        System.out.println("Swords was able to do " + sword.hit(armor) + " of damage due to an armor with " + armor + " points.");
+        printWeaponInfo("Sword", 20);
+        printWeaponInfo("TheChosenOneAxe", 20);
 
-        //TODO: Add the remaining weapons here
+    }
 
+    private static void printWeaponInfo(String weaponName, int armor) {
+        Weapon weapon = WeaponFactory.getWeapon(weaponName);
+        System.out.println(weaponName + " has " + weapon.hit() + " of damage.");
+        System.out.println(weaponName + " was able to do " + weapon.hit(armor) +
+                " of damage due to an armor with " + armor + " points.");
     }
 }

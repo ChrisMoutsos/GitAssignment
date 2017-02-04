@@ -11,9 +11,12 @@ package edu.fsu.cs.cen4021.armory;
 public class WeaponFactory {
 
     public static Weapon getWeapon(String type) {
+        type = type.toLowerCase();
         switch (type) {
             case "sword":
                 return new Sword();
+            case "thechosenoneaxe":
+                return new TheChosenOneAxe();
             default:
                 throw new IllegalArgumentException("Invalid type");
         }
