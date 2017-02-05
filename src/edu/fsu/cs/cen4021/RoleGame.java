@@ -19,7 +19,8 @@ public class RoleGame {
                 "SimpleAxe",
                 "SimpleMagicStaff",
                 "TheChosenOneAxe",
-                "AncientMagicStaff"
+                "AncientMagicStaff",
+                "WebRitualArrow"
         );
 
         List<Integer> armors = Arrays.asList(
@@ -27,21 +28,15 @@ public class RoleGame {
                 20
         );
 
-        for (Iterator<String> it = weaponNames.iterator(); it.hasNext();) {
-            String weaponName = it.next();
-
-            printWeaponInfo(weaponName, armors);
-        }
+        weaponNames.forEach(weaponName -> printWeaponInfo(weaponName, armors));
     }
 
     private static void printWeaponInfo(String weaponName, List<Integer> armors) {
         Weapon weapon = WeaponFactory.getWeapon(weaponName);
         System.out.println(weaponName + " has " + weapon.hit() + " of damage.");
-        for (Iterator<Integer> it = armors.iterator(); it.hasNext();) {
-            Integer armor = it.next();
-            System.out.println(weaponName + " was able to do " + weapon.hit(armor) +
-                    " of damage due to an armor with " + armor + " points.");
-        }
+        armors.forEach(armor ->
+                System.out.println(weaponName + " was able to do " + weapon.hit(armor) +
+                " of damage due to an armor with " + armor + " points."));
         System.out.println("");
     }
 }
