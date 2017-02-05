@@ -16,7 +16,8 @@ class SimpleArrow extends BasicWeapon implements Weapon {
 
     @Override
     public int hit(int armor) {
-        int damage = DAMAGE - Math.min(armor, 5);
+        armor = Math.max(0, armor - 5);
+        int damage = DAMAGE - armor;
         if (damage < 0) {
             return 0;
         }

@@ -10,10 +10,12 @@ import java.util.ListIterator;
  */
 class AncientMagicStaff extends BasicWeapon implements Weapon {
 
+    @SuppressWarnings("unchecked")
     AncientMagicStaff() {
         super(0);
 
-        List<Integer> list = null;
+        int damage = 0;
+        List<Integer> list;
         String filename = new File("").getAbsolutePath();
         filename = filename + "/conf/ancientstaff.obj";
         try {
@@ -21,11 +23,30 @@ class AncientMagicStaff extends BasicWeapon implements Weapon {
             try {
                 ObjectInputStream ois = new ObjectInputStream(in);
                 try {
-                    list = (List<Integer>) (ois.readObject());
+                    Object obj = ois.readObject();
+                    if (!(obj instanceof List)) {
+                        System.err.println("Object was not a List");
+                        System.exit(1);
+                    }
+
+                    list = (List<Integer>) obj;
+                     /* raise each element to the second power */
+                    for (ListIterator<Integer> it = list.listIterator(); it.hasNext();) {
+                            Integer e = it.next();
+                        it.set((int) Math.pow(e, 2));
+                    }
+
+                    /* remove the second and fifth elements */
+                                list.remove(4);
+                                list.remove(1);
+
+                    /* reverse the order of the list */
+                                Collections.reverse(list);
+                    /* damage is sum of first, third, and seventh elements */
+                    damage = list.get(0) + list.get(2) + list.get(6);
                 } catch (ClassNotFoundException ex) {
                     System.err.println("Class not found exception!");
                     ex.printStackTrace();
-                    System.err.print(ex);
                 }
             } catch(IOException ex) {
                 System.err.println("Object input stream error!");
@@ -37,21 +58,7 @@ class AncientMagicStaff extends BasicWeapon implements Weapon {
             ex.printStackTrace();
         }
 
-        /* raise each element to the second power */
-        for (ListIterator<Integer> it = list.listIterator(); it.hasNext();) {
-            Integer e = it.next();
-            it.set((int) Math.pow(e, 2));
-        }
-
-        /* remove the second and fifth elements */
-        list.remove(4);
-        list.remove(1);
-
-        /* reverse the order of the list */
-        Collections.reverse(list);
-
-        /* damage is sum of first, third, and seventh elements */
-        this.DAMAGE = list.get(0) + list.get(2) + list.get(6);
+        this.DAMAGE = damage;
     }
 
     @Override
@@ -61,7 +68,8 @@ class AncientMagicStaff extends BasicWeapon implements Weapon {
 
     @Override
     public int hit(int armor) {
-        int damage = (int) Math.round(DAMAGE - armor * 0.75);
+        armor *= 0.75;
+        int damage = Math.round(DAMAGE - armor);
         if (damage < 0) {
             return 0;
         }
